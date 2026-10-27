@@ -1,34 +1,40 @@
 import random
 
 class Solution(object):
+
     def __init__(self, w):
-        # prefix[i] = sum of w[0..i], the right end of index i's segment
-        self.prefix = []
-        total = 0
-        for x in w:
-            total += x
-            self.prefix.append(total)
-        self.total = total
+        """
+        :type w: List[int]
+        """
+        # prefix[i] = w[0] + ... + w[i]
+        # Index i owns the range (prefix[i-1], prefix[i]] on a number line,
+        # so its length equals its weight.
+        self.prefix = [w[0]]
+        for n in w[1:]:
+            self.prefix.append(self.prefix[-1] + n)   # running sum so far
 
     def pickIndex(self):
-        target = random.randint(1, self.total)   # both ends inclusive
+        """
+        :rtype: int
+        """
+        # Pick a random point on the line [1, total]
+        target = random.randint(1, self.prefix[-1])
 
-        # Find the first prefix sum >= target
+        # Binary search for the first prefix sum >= target;
+        # that index's segment contains the random point
         l, r = 0, len(self.prefix) - 1
-        res = r
+        res = r     # Never actually used: prefix[-1] == total >= target
         while l <= r:
             mid = (l + r) // 2
             if self.prefix[mid] >= target:
-                res = mid
+                res = mid       # mid is a candidate, look further left
                 r = mid - 1
             else:
-                l = mid + 1
+                l = mid + 1     # prefix[mid] too small, go right
         return res
 
-
-# Your Solution object will be instantiated and called as such:
-# obj = Solution(w)
-# param_1 = obj.pickIndex()
+# __init__:  O(n) time, O(n) space
+# pickIndex: O(log n) time
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
