@@ -13,7 +13,7 @@ class Solution(object):
                 res.append(path[:])
                 return
             for i in range(len(nums)):
-                if visited[i] == False:
+                if not visited[i]:
                     path.append(nums[i])
                     visited[i] = True
                     backtracking()
