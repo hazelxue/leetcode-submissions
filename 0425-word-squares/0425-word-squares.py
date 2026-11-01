@@ -4,15 +4,16 @@ class Solution(object):
         :type words: List[str]
         :rtype: List[List[str]]
         """
+        n = len(words[0])
         prefix = defaultdict(list)
         for w in words:
-            for i in range(len(w)):
+            for i in range(n):
                 prefix[w[:i]].append(w)
         
         path = []
         res = []
         def dfs(step):
-            if len(path) == len(words[0]):
+            if len(path) == n:
                 res.append(path[:])
                 return
             
