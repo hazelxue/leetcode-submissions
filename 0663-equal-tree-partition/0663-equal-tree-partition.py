@@ -22,10 +22,9 @@ class Solution(object):
             return node.val + l + r
         
         dfs(root)
-        if sum_[-1] / 2.0 in sum_[: -1]:
+        if sum_[-1] / 2.0 in sum_[: -1]:#不能包含最后一位，他自己是整棵树，2.0避免了是奇数的情况
             return True
-        else:
-            return False
+        return False
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
