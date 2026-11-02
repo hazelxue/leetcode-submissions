@@ -21,11 +21,9 @@ class Solution(object):
                 if node.val > res[depth]:
                     res[depth] = node.val
             #left
-            if node.left:
-                dfs(node.left, depth + 1)
+            dfs(node.left, depth + 1)
             #right
-            if node.right:
-                dfs(node.right, depth + 1)
+            dfs(node.right, depth + 1)
         dfs(root, 0)
         return res
 
