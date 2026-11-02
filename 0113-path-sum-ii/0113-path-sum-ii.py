@@ -20,14 +20,15 @@ class Solution(object):
                 return
             #middle, collect res
             path.append(node.val)
+            sum_ = sum_ + node.val
             
-            if sum_ + node.val == targetSum and not node.left and not node.right:   
+            if sum_ == targetSum and not node.left and not node.right:   
                 res.append(path[:])# do not return before pop(), in recursion every append need pop
 
             #left
-            dfs(node.left, sum_ + node.val)
+            dfs(node.left, sum_)
             #right
-            dfs(node.right, sum_ + node.val)
+            dfs(node.right, sum_)
             path.pop()
 
         dfs(root, 0)
