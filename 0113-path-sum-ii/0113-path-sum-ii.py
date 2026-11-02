@@ -22,7 +22,7 @@ class Solution(object):
             path.append(node.val)
             
             if sum_ + node.val == targetSum and not node.left and not node.right:   
-                res.append(path[:])
+                res.append(path[:])# do not return before pop(), in recursion every append need pop
 
             #left
             dfs(node.left, sum_ + node.val)
