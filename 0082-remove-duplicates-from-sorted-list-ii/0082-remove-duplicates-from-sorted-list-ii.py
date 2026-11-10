@@ -16,7 +16,7 @@ class Solution(object):
             if cur.next and cur.val == cur.next.val:
                 while cur.next and cur.val == cur.next.val:
                     cur = cur.next
-                pre.next = cur.next
+                pre.next = cur.next#此时不移动pre 因为cur没有验证是否合法
             else:
                 pre = pre.next
             cur = cur.next         
