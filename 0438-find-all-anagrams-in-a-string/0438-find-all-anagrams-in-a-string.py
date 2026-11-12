@@ -16,11 +16,11 @@ class Solution(object):
         
         # sliding window
         for i in range(m):
-            have[ord(s[i]) - ord('a')] += 1
+            have[ord(s[i]) - ord('a')] += 1#右进
             if i >= n:
-                have[ord(s[i - n]) - ord('a')] -= 1
+                have[ord(s[i - n]) - ord('a')] -= 1#左出
             if have == need:
-                res.append(i - n + 1)
+                res.append(i - n + 1)#窗口起点
         return res
 
 # Synced seamlessly with LeetHub Pro
