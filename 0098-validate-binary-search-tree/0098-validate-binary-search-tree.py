@@ -14,11 +14,14 @@ class Solution(object):
         def dfs(root):
             if not root:
                 return True
+            #接住左边的结果，作为中的结果
             if not dfs(root.left):
                 return False
+            #中
             if prev[0] is not None and root.val <= prev[0]:
                 return False
             prev[0] = root.val
+            #此时右边结果就是中的结果了
             return dfs(root.right)
         
         return dfs(root)
