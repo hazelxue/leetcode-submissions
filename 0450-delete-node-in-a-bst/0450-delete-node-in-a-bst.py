@@ -17,16 +17,16 @@ class Solution(object):
             root.right = self.deleteNode(root.right, key)
         elif root.val > key:
             root.left = self.deleteNode(root.left, key)
-        else:
-            if not root.left:
+        else:#equal
+            if not root.left:#left is empty
                 return root.right
-            elif not root.right:
+            elif not root.right:#right is empty
                 return root.left
-            else:
+            else:#both not empty
                 cur = root.right
                 while cur.left:
-                    cur = cur.left#find the smallest one
-                root.val = cur.val
+                    cur = cur.left #find the smallest one in this subtree
+                root.val = cur.val#copy its value to the root
                 #delete cur
                 root.right = self.deleteNode(root.right, cur.val)
         return root
