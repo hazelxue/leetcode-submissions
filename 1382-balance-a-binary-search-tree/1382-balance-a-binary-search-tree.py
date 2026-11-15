@@ -20,7 +20,6 @@ class Solution(object):
             inorder(node.right)
         inorder(root)
 
-        n = len(val)
         def build(l, r):
             if l > r:
                 return
@@ -29,7 +28,7 @@ class Solution(object):
             root.left = build(l, mid - 1)
             root.right = build(mid + 1, r)
             return root
-        return build(0, n - 1)
+        return build(0, len(val) - 1)
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
