@@ -7,8 +7,8 @@ class Solution(object):
         step = 0
         cover = 0
         nxt = 0
-        for i in range(len(nums) - 1):
-            nxt = max(nxt, i + nums[i])
+        for i in range(len(nums) - 1):#for循环就可以，不用while
+            nxt = max(nxt, i + nums[i])#先更新，再看是不是到头了
             if i == cover:
                 step += 1
                 cover = nxt
