@@ -7,7 +7,7 @@ class Solution(object):
         """
         m, n = len(obstacleGrid), len(obstacleGrid[0])
         dp = [[0] * (n + 1) for _ in range(m + 1)]
-        dp[1][0] = 1
+        dp[1][0] = 1#不能写dp[1][1]否则循环开始就被覆盖了
 
         for i in range(1, m + 1):
             for j in range(1, n + 1):
