@@ -9,15 +9,14 @@ class Solution(object):
             return False
         
         m = len(nums)
-        dp = [[False] * (target + 1) for _ in range(m + 1)]
-        dp[0][0] = True
+        dp = [False] * (target + 1)
+        dp[0] = True
+
         for i in range(1, m + 1):
             x = nums[i - 1]
-            for j in range(target + 1):
-                dp[i][j] = dp[i - 1][j]
-                if j >= x:
-                    dp[i][j] = dp[i - 1][j - x] or dp[i - 1][j]
-        return dp[m][target]
+            for j in range(target, x - 1, -1):
+                dp[j] = dp[j - x] or dp[j]
+        return dp[target]
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
