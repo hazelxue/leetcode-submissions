@@ -23,10 +23,12 @@ class Solution(object):
             for i, j in zip(a, b):
                 if i != j:
                     differ += 1
+                    if differ > 2:
+                        return False
             return differ == 0 or differ == 2
         count = n
         for i in range(n):
-            for j in range(i, n):
+            for j in range(i + 1, n):
                 if similar(strs[i], strs[j]) and find(i) != find(j):
                     union(i, j)
                     count -= 1
