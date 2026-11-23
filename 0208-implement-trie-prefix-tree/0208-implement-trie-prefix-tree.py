@@ -24,7 +24,7 @@ class Trie(object):
         node = self.root
         for ch in word:
             if ch not in node.children:
-                return None
+                return None# ← 路径中途断了，返回 None
             node = node.children[ch]
         return node
 
@@ -34,7 +34,7 @@ class Trie(object):
         :rtype: bool
         """
         node = self.find(word)
-        return node is not None and node.is_end
+        return node is not None and node.is_end#因此要确定不是None
 
 
     def startsWith(self, prefix):
