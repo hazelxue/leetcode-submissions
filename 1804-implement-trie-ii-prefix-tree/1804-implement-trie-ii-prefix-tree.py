@@ -56,7 +56,7 @@ class Trie(object):
         """
         node = self.root
         for ch in word:
-            node = node.children[ch]
+            node = node.children[ch]#先走再减，和Insert对应了
             node.pass_ -= 1
         node.end -= 1
 
