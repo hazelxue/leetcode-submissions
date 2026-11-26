@@ -6,12 +6,14 @@ class Solution(object):
         """
         stack = []
         n = len(s)
+        seen = set()
         for i in range(n):
-            if s[i] in stack:
+            if s[i] in seen:
                 continue
             while stack and stack[-1] > s[i] and stack[-1] in s[i:]:
-                stack.pop()
+                seen.remove(stack.pop())
             stack.append(s[i])
+            seen.add(s[i])
         return "".join(stack)
 
                 
