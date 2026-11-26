@@ -7,10 +7,11 @@ class Solution(object):
         stack = []
         n = len(s)
         seen = set()
+        last = {ch: i for i, ch in enumerate(s)}
         for i in range(n):
             if s[i] in seen:
                 continue
-            while stack and stack[-1] > s[i] and stack[-1] in s[i:]:
+            while stack and stack[-1] > s[i] and last[stack[-1]] > i:
                 seen.remove(stack.pop())
             stack.append(s[i])
             seen.add(s[i])
